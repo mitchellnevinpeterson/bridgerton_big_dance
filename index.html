@@ -229,6 +229,33 @@
     <h2>Stanford's 26th Annual Ball<br>A Bridgerton-Inspired <br>Garden Party</h2>
   </header>
 
+  <button id="musicToggle" onclick="toggleMusic()" 
+    style="margin-top: 2rem; padding: 1rem 2rem; background-color: var(--gold); color: white; border-radius: 10px; font-family: 'Cinzel', Georgia, serif; font-size: 1.2rem;">
+    🎵 Tap to Begin Music
+  </button>
+
+  <audio id="waltz" autoplay loop>
+    <source src="music2.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    let isPlaying = false;
+    const music = document.getElementById('waltz');
+    const button = document.getElementById('musicToggle');
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        button.textContent = '🎵 Tap to Begin Waltz Music';
+      } else {
+        music.play();
+        button.textContent = '⏸ Tap to Pause Waltz Music';
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+
   <!-- <div class="content"> -->
 
     <!-- <div class="content"> -->
