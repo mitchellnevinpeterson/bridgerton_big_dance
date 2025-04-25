@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Big Dance Photo Carousel</title>
+  <style>
+    body {
+      margin: 0;
+      background: url('bridgerton_flowerhall.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Georgia, serif;
+      text-align: center;
+    }
+
+    .carousel-container {
+      max-width: 90%;
+      margin: 3rem auto;
+      position: relative;
+      background-color: rgba(124, 154, 116, 0.98);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      height: auto;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+
+    .slides img {
+      min-width: 100%;
+      height: auto;
+      object-fit: contain;
+      margin: auto;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(124, 154, 116, 0.8);
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 6px;
+      z-index: 2;
+    }
+
+    .arrow:hover {
+      background-color: rgba(124, 154, 116, 1);
+    }
+
+    .arrow-left {
+      left: 10px;
+    }
+
+    .arrow-right {
+      right: 10px;
+    }
+
+    .nav-link {
+      margin-top: 2rem;
+      display: inline-block;
+      font-weight: bold;
+      text-decoration: none;
+      color: #7C9A74;
+      background-color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      margin-bottom: 2rem;
+    }
+
+    .nav-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .arrow {
+        font-size: 1.5rem;
+        padding: 0.3rem 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 style="background-color: rgba(124, 154, 116, 0.95); color: white; padding: 1rem 0; margin: 0;">Big Dance Memories</h1>
+
+  <a class="nav-link" href="index.html">← Back to Home</a>
+
+  <div class="carousel-container">
+    <button class="arrow arrow-left" onclick="prevSlide()">&#8592;</button>
+    <div class="slides" id="slideContainer">
+      <img src="1994.jpg" alt="1994">
+      <img src="1997.jpg" alt="1997">
+      <img src="2000.jpg" alt="2000">
+      <img src="2001.jpg" alt="2001">
+      <img src="2002.jpg" alt="2002">
+      <img src="2002_Dancing_1.jpg" alt="2002 Dancing 1">
+      <img src="2002_Dancing_2.jpg" alt="2002 Dancing 2">
+      <img src="2002_Dancing_3.jpg" alt="2002 Dancing 3">
+      <img src="2002_Dancing_4.jpg" alt="2002 Dancing 4">
+      <img src="2002_Dancing_5.jpg" alt="2002 Dancing 5">
+      <img src="2003-full.jpg" alt="2003 Full">
+      <img src="2006-full.jpg" alt="2006 Full">
+      <img src="2007.jpg" alt="2007">
+      <img src="2008.jpg" alt="2008">
+      <img src="2009-full.jpg" alt="2009 Full">
+      <img src="2010.jpg" alt="2010">
+      <img src="2011.jpg" alt="2011">
+      <img src="2012.jpg" alt="2012">
+      <img src="2013.jpg" alt="2013">
+      <img src="2014.jpg" alt="2014">
+    </div>
+    <button class="arrow arrow-right" onclick="nextSlide()">&#8594;</button>
+  </div>
+
+  <script>
+    const slideContainer = document.getElementById("slideContainer");
+    const slides = document.querySelectorAll(".slides img");
+    let currentIndex = 0;
+
+    function updateSlidePosition() {
+      slideContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      updateSlidePosition();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      updateSlidePosition();
+    }
+
+    updateSlidePosition();
+  </script>
+</body>
+</html>
